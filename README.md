@@ -246,17 +246,22 @@ In order for heroku to work, you can't have `node_modules` in your repo.  Instea
 	- You can also do this step off their website if you want but since you'll be working in terminal anyway, might as well just do it through terminal.
 	- Notice that if you successfully created a heroku app, you can see that the heroku remote was automatically added to your project's repo. Confirm this by typing `git remote -v`, you should see `origin` as well as `heroku`.
 
-## Attach mongolab addon
+## Add Database from MongoDB Atlas
 
+Go to [heroku](https://dashboard.heroku.com/) - make sure you are logged in and go to your app
 
-go to heroku go to settings add config variable ![](https://i.imgur.com/lB94Jhk.png)
+Go to the settings tab
 
-Now that you've partitioned an app on heroku's side, you need to attach a free addon called mongolab (mLab). Mongolab provides you with heroku's version of mongodb. Up until now, we've just been using express on local connecting to our local mongodb. Now we need to connect our heroku app onto heroku's version of mongodb.
-- Go to heroku and login, then hit personal apps (https://dashboard.heroku.com/apps), click on your new app, then click on the resources tab.
-	- Search for mLab and add the free version `Sandbox`.
+![](https://i.imgur.com/citTnDN.png)
 
-<hr>
+push the `reveal config vars` button
 
+in there add:
+
+![](https://i.imgur.com/9CKHcBM.png)
+
+- make sure `MONGODB_URI` key matches perfectly what you have in your `server.js` file for connecting with mongoose.
+- make the property your connection string from Atlas with *YOUR* username password filled in
 
 ## Push Git
 
