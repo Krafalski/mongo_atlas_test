@@ -2,6 +2,7 @@
 
 ## Lesson Objectives
 
+1. Make sure you completed the MongoDB Atlas Set Up
 1. Make a new github repository
 1. Create a basic express app
 1. set up environmental variables
@@ -69,12 +70,12 @@ Let's build a basic express app
 
 - `touch server.js`
 - `npm init`
-- `npm install express mongoose method-override dotenv`
+- `npm install ejs express mongoose method-override dotenv`
 - `touch .env`
 
 Check out `package.json` make sure everything looks as expected
 
-![package.json](https://i.imgur.com/T1cwlmY.png)
+![package.json](https://i.imgur.com/KzEzGiw.png)
 
 <hr>
 
@@ -100,6 +101,22 @@ In package.json, you can add `engines` anywhere, just make sure you don't break 
   },
   "description": "",
 ```
+
+## Set Environmental Variables
+We had to install a new package `dotenv` - this will allow us to store variables that are specific to our local computer environment AND our heroku environment. Our variables should **NOT** be tracked by git and should **NOT** be on github.
+This can keep things like passwords and api keys safer from hacking.
+
+Inside our `.env` file let's add:
+
+**IMPORTANT!!** Do not use quotes or spaces however tempting it may feel!
+
+Replace the MONGODB_URI with the one provided to you from your MongoDB Atlass, be sure to swap out `<password>` with the password you created for your user
+
+```
+PORT=3000
+MONGODB_URI=mongodb+srv://karolin:<password>@ga-sei-u8fme.mongodb.net/test?retryWrites=true&w=majority
+```
+
 
 **in server.js**
 
