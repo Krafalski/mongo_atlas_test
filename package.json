@@ -23,6 +23,7 @@
   "homepage": "https://github.com/Krafalski/mongo_atlas_test#readme",
   "dependencies": {
     "dotenv": "^8.0.0",
+    "ejs": "^2.6.2",
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.6.7"

@@ -231,6 +231,9 @@ In order for heroku to work, you can't have `node_modules` in your repo.  Instea
 
 ## Attach mongolab addon
 
+
+go to heroku go to settings add config variable ![](https://i.imgur.com/lB94Jhk.png)
+
 Now that you've partitioned an app on heroku's side, you need to attach a free addon called mongolab (mLab). Mongolab provides you with heroku's version of mongodb. Up until now, we've just been using express on local connecting to our local mongodb. Now we need to connect our heroku app onto heroku's version of mongodb.
 - Go to heroku and login, then hit personal apps (https://dashboard.heroku.com/apps), click on your new app, then click on the resources tab.
 	- Search for mLab and add the free version `Sandbox`.
