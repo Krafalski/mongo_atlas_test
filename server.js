@@ -53,6 +53,8 @@ app.get('/' , (req, res) => {
   res.send('Hello World!');
 });
 
+const hotelsController = require('./controllers/hotels_controller.js')
+app.use('/hotels', hotelsController)
 //___________________
 //Listener
 //___________________
