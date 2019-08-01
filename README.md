@@ -13,6 +13,9 @@
 1. Update code for heroku & mongolab
 1. Push git to heroku
 
+## Client Server Flow Review
+![](Client_Server.png)
+
 ## New Github Repository
 
 This is going to be a porfolio piece so you'll want it hosted on regular [github](https://github.com/).
