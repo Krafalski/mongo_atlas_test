@@ -70,8 +70,8 @@ Let's build a basic express app
 
 - `touch server.js`
 - `npm init`
-- `npm install ejs express mongoose method-override dotenv`
-- `touch .env`
+- `npm install ejs express mongoose method-override`
+
 
 Check out `package.json` make sure everything looks as expected
 
@@ -103,19 +103,26 @@ In package.json, you can add `engines` anywhere, just make sure you don't break 
 ```
 
 ## Set Environmental Variables
-We had to install a new package `dotenv` - this will allow us to store variables that are specific to our local computer environment AND our heroku environment. Our variables should **NOT** be tracked by git and should **NOT** be on github.
-This can keep things like passwords and api keys safer from hacking.
+We have to set specific to our local computer environment AND our heroku environment. Our variables should **NOT** be tracked by git and should **NOT** be on github.
+This can keep things like passwords and api keys safer from hacking. There are a few ways to accomplish this. We're going to store our variables in our `.bash_profile` which is a file that should NEVER end up on github and we can easily export our variables and have access to them on our app.
 
-Inside our `.env` file let's add:
+- open `~/.bash_profile`, if you don't have one: `touch ~/.bash_profile`
 
-**IMPORTANT!!** Do not use quotes or spaces however tempting it may feel!
 
-Replace the MONGODB_URI with the one provided to you from your MongoDB Atlass, be sure to swap out `<password>` with the password you created for your user
+Add the following:
 
+```bash
+# My GA project 2 MongoDB Atlas connection String
+export MONGODB_URI="mongodb+srv://karolin:<password>@ga-sei-u8fme.mongodb.net/test?retryWrites=true&w=majority"
+# My GA project 2 Port for my Express App
+export PORT=3000
 ```
-PORT=3000
-MONGODB_URI=mongodb+srv://karolin:<password>@ga-sei-u8fme.mongodb.net/test?retryWrites=true&w=majority
-```
+
+Replace the MONGODB_URI with the one provided to you from YOUR MongoDB Atlas, be sure to swap out `<password>` with the password you created for your user
+
+Load your changes
+
+- `source ~/.bash_profile` (alternatively you can close terminal down fully and reopen)
 
 
 **in server.js**
@@ -129,7 +136,6 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
-require('dotenv').config();
 //___________________
 //Port
 //___________________
@@ -142,6 +148,11 @@ const PORT = process.env.PORT;
 // How to connect to the database either via heroku or locally
 const MONGODB_URI = process.env.MONGODB_URI;
 
+// Fix Depreciation Warnings from Mongoose*
+// May or may not need these depending on your Mongoose version
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 // Connect to Mongo
 mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
 
@@ -149,9 +160,6 @@ mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('mongo connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
-
-// open the connection to mongo
-db.on('open' , ()=>{});
 
 //___________________
 //Middleware
