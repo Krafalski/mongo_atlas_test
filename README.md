@@ -114,8 +114,6 @@ Add the following:
 ```bash
 # My GA project 2 MongoDB Atlas connection String
 export MONGODB_URI="mongodb+srv://karolin:<password>@ga-sei-u8fme.mongodb.net/test?retryWrites=true&w=majority"
-# My GA project 2 Port for my Express App
-export PORT=3000
 ```
 
 Replace the MONGODB_URI with the one provided to you from YOUR MongoDB Atlas, be sure to swap out `<password>` with the password you created for your user
@@ -140,7 +138,7 @@ const db = mongoose.connection;
 //Port
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 //___________________
 //Database
