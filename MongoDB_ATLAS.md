@@ -46,9 +46,9 @@ It may take several minutes for Atlas to build your cluster.
 
 Each cluster must have a user created whose credentials will be provided in the database connection string when connecting to a database.
 
-First click the **Security** tab:
+First click the **Database Access** tab:
 
-<img src="https://i.imgur.com/B5b75do.png">
+![](https://i.imgur.com/mZH68LT.png)
 
 Click the `+ ADD NEW USER` button, then enter a username, password, select the **Read and write to any database** option, then click the `Add User` button:
 
@@ -60,7 +60,7 @@ Atlas has a security feature that allows the databases to be accessed by _whitel
 
 However, you must whitelist **all IPs** to ease development and deployment of your application.
 
-While still in the Security tab, click **IP Whitelist**, then click the `+ ADD IP ADDRESS` button.
+Click on **Network Access**, click **IP Whitelist**, then click the `+ ADD IP ADDRESS` button.
 
 In the dialog, first click `ALLOW ACCESS FROM ANYWHERE` then click the `Confirm` button:
 
